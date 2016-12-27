@@ -58,7 +58,7 @@ export class BookService {
 
   }
 
-  totalBooks(search: URLSearchParams): Observable<number> {
+  totalBooks(search: URLSearchParams = new URLSearchParams()): Observable<number> {
     return this.http.get(`${environment.API_URL}/book/total`, {search})
       .map(response => response.json())
       .map(response => {
