@@ -1,18 +1,31 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import {Http} from '@angular/http';
+import {Http, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 export interface IBook {
-  title: string;
-  _id: string;
-  author: string;
-  createdAt: string;
-  currentPrice: number;
-  currentRank: number;
-  prevRank: number;
-  lastHistoryUpdate: string;
+  title?: string;
+  _id?: string;
+  asin: string;
+  author?: string;
+  createdAt?: string;
+  currentPrice?: number;
+  currentRank?: number;
+  prevRank?: number;
+  lastHistoryUpdate?: string;
+  isbn?: string;
+  label?: string;
+  lang?: string;
+  cat1?: string;
+  cat1Id?: string;
+  cat2?: string;
+  cat2Id?: string;
+  pages?: number;
+  rating?: number;
+  reviews?: number;
+  kindleUnlimited?: boolean;
+  drm?: boolean;
 }
 
 @Injectable()
@@ -32,8 +45,9 @@ export class BookService {
 
   }
 
-  create(data: any): any {
-
+  create(data: IBook): Observable<any> {
+    return this.http.post(`${environment.API_URL}/book`, data)
+      .map(response => response.json())
   }
 
   update(data: any): any {
@@ -44,8 +58,8 @@ export class BookService {
 
   }
 
-  totalBooks(): Observable<number> {
-    return this.http.get(`${environment.API_URL}/book/total`)
+  totalBooks(search: URLSearchParams): Observable<number> {
+    return this.http.get(`${environment.API_URL}/book/total`, {search})
       .map(response => response.json())
       .map(response => {
         if (response.success) {

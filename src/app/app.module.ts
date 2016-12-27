@@ -10,10 +10,14 @@ import { TotalBooksComponent } from './+dashboard/total-books/total-books.compon
 import {BookService} from './shared/book.service';
 import {SearchComponent} from './+book/search/search.component';
 import {DetailComponent} from './+book/detail/detail.component';
+import { CreateComponent } from './+book/create/create.component';
+import { NewBooksComponent } from './+dashboard/new-books/new-books.component';
 
 const appRoutes: Routes = [
+  { path: 'book/create', component: CreateComponent },
   { path: 'book/:id', component: DetailComponent },
   { path: '',
+    pathMatch: 'full',
     component: DashboardComponent
   }
   // { path: '**', component: PageNotFoundComponent }
@@ -26,7 +30,9 @@ const appRoutes: Routes = [
     DashboardComponent,
     TotalBooksComponent,
     SearchComponent,
-    DetailComponent
+    DetailComponent,
+    CreateComponent,
+    NewBooksComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

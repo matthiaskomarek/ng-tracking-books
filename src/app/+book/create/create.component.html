@@ -1,0 +1,33 @@
+<div class="row content-box">
+  <div class="small-12 columns">
+    <h4>Neues Buch anlegen</h4>
+  </div>
+  <form (ngSubmit)="onSubmit()">
+    <div class="medium-4 columns">
+      <label>ASIN*
+        <input type="text" [(ngModel)]="book.asin" name="asin" required placeholder="A1234">
+      </label>
+      <label>Titel
+        <input type="text" [(ngModel)]="book.title" name="title" placeholder="Book title">
+      </label>
+      <label>Autor
+        <input type="text" [(ngModel)]="book.author" name="author" placeholder="Book author">
+      </label>
+    </div>
+    <div class="medium-4 columns">
+      <label>Aktueller Preis
+        <input type="text" [(ngModel)]="book.currentPrice" name="currentPrice" placeholder="0.34">
+      </label>
+      <label>Aktueller Rang
+        <input type="text" [(ngModel)]="book.currentRank" name="currentRank" placeholder="0">
+      </label>
+      <label>ISBN
+        <input type="text" [(ngModel)]="book.isbn" name="isbn" placeholder="12345">
+      </label>
+    </div>
+    <div class="medium-4 columns">
+      <button class="button" type="submit">Buch speichern</button>
+      <p *ngIf="createResult">{{createResult.message}}</p>
+    </div>
+  </form>
+</div>

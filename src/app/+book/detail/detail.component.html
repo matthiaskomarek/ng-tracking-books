@@ -9,6 +9,7 @@
               <ul class="no-style">
                 <li>hinzugefügt am: {{book.createdAt | date}}</li>
                 <li>ASIN: <a [href]="'https://amazon.de/dp/' + book._id" target="_blank">{{book._id}}</a></li>
+                <li>ISBN: {{book.isbn}}</li>
                 <li>aktueller Preis: {{book.currentPrice}}</li>
                 <li>aktueller Rang: {{book.currentRank}} <small>({{book.prevRank}})</small></li>
                 <li>letztes Preis/Rang Update: {{book.lastHistoryUpdate | date}}</li>
@@ -21,10 +22,10 @@
             <div class="card-section">
               <ul class="no-style">
                 <li>Autor: {{book.author}}</li>
-                <li>ASIN: <a [href]="'https://amazon.de/dp/' + book._id" target="_blank">{{book._id}}</a></li>
-                <li>aktueller Preis: {{book.currentPrice}}</li>
-                <li>aktueller Rang: {{book.currentRank}} <small>({{book.prevRank}})</small></li>
-                <li>letztes Preis/Rang Update: {{book.lastHistoryUpdate | date}}</li>
+                <li>Publisher: {{book.label}}</li>
+                <li>Sprache: {{book.lang}}</li>
+                <li>Kat 1: {{book.cat1}} <small>({{book.cat1Id}}</small></li>
+                <li>Kat 2: {{book.cat2}} <small>({{book.cat2Id}}</small></li>
               </ul>
             </div>
           </div>
@@ -32,8 +33,14 @@
         <div class="column">
           <div class="card">
             <div class="card-section">
-              <h4>Letztes History update</h4>
-              <p>Abgleich von Preis und Rang</p>
+              <ul class="no-style">
+                <li>Seiten: {{book.pages}}</li>
+                <li>Wertung: {{book.rating}}</li>
+                <li>Rezensionen: {{book.reviews}}</li>
+                <li>KindleUnlimited: {{book.kindleUnlimited}}</li>
+                <li>DRM: {{book.drm}}</li>
+                <li></li>
+              </ul>
             </div>
           </div>
         </div>
