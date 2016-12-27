@@ -1,3 +1,40 @@
-<h1>
-  {{title}}
-</h1>
+<header>
+  <h5>Tracking Books</h5>
+</header>
+<div class="off-canvas-wrapper">
+  <div class="off-canvas-wrapper-inner">
+    <div class="off-canvas position-left reveal-for-large" id="my-info" aria-hidden="true">
+      <div class="row column logo-box">
+        <div class="logo-box-content">
+          <h5>TrackingBooks <br> <small>Version: {{version}}</small></h5>
+        </div>
+      </div>
+      <div class="row column">
+        <ul class="no-style navigation-menu">
+          <li>
+            <app-book-search></app-book-search>
+          </li>
+          <li>
+            <a routerLink="/" routerLinkActive="active"><i class="material-icons">dashboard</i> Dashboard</a>
+          </li>
+          <li>
+            <a href=""><i class="material-icons">add_box</i> Buch hinzufügen</a>
+          </li>
+          <li>
+            <a href=""><i class="material-icons">create</i> Buch editieren
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="off-canvas-content">
+      <div class="title-bar hide-for-large">
+        <div class="title-bar-left">
+          <button class="menu-icon" type="button" aria-expanded="false" aria-controls="my-info"></button>
+          <span class="title-bar-title">Mike Mikerson</span>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

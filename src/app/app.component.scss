@@ -1,0 +1,45 @@
+@import '../variables';
+
+.logo-box {
+  background: $main-color;
+
+  .logo-box-content {
+    padding: 50px 30px;
+  }
+}
+
+ul.navigation-menu {
+  padding-top: 20px;
+  li > a {
+    padding: 16px 25px 16px 65px;
+    display: block;
+    position: relative;
+    color: $base-text-color;
+
+    &.active, &:hover {
+      color: $highlight-text-color;
+    }
+
+    & > i {
+      position: absolute;
+      left: 25px;
+      font-size: 22px;
+      top: 4px;
+      width: 25px;
+      text-align: center;
+      padding: 13px 0;
+    }
+  }
+}
+
+.off-canvas-content {
+  margin-top: 100px;
+  padding-top: 15px;
+  min-height: calc(100vh - 140px);
+  background-color: $second-sub-color;
+}
+
+.content-box:first-child {
+  transform: translateY(-60px);
+}
+

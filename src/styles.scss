@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'variables';
+body {
+  background-color: $main-color;
+  color: $base-text-color;
+}
+body:before {
+  content: '';
+  height: 266px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #1e2a31;
+}
+
+.off-canvas {
+  background: $second-sub-color;
+}
+.row {
+  max-width: 85rem;
+}
+
+.card {
+  background: $second-color;
+  border-radius: $border-radius;
+  border: none;
+  color: $main-text-color;
+
+  h3, h4 {
+    color: $main-text-color;
+  }
+
+  p {
+    color: $second-text-color;
+    line-height: 0;
+    font-size: 0.8rem;
+  }
+
+  h4.number {
+    color: $highlight-text-color;
+  }
+}
+
+ul.no-style {
+  list-style-type: none;
+  margin-left: 0;
+}
