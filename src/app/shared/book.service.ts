@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import {Http, URLSearchParams} from '@angular/http';
+import {URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import {HttpClient} from '@angular/common/http';
+import {map} from "rxjs/internal/operators";
 
 export interface IBook {
   title?: string;
@@ -31,12 +33,11 @@ export interface IBook {
 @Injectable()
 export class BookService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   get(asin: string): Observable<IBook> {
     return this.http.get(`${environment.API_URL}/book/${asin}`)
       .map((response: any) => {
-        response = response.json();
         return response.data;
       });
   }
@@ -46,8 +47,7 @@ export class BookService {
   }
 
   create(data: IBook): Observable<any> {
-    return this.http.post(`${environment.API_URL}/book`, data)
-      .map(response => response.json())
+    return this.http.post(`${environment.API_URL}/book`, data);
   }
 
   update(data: any): any {
@@ -58,15 +58,16 @@ export class BookService {
 
   }
 
-  totalBooks(search: URLSearchParams = new URLSearchParams()): Observable<number> {
-    return this.http.get(`${environment.API_URL}/book/total`, {search})
-      .map(response => response.json())
-      .map(response => {
-        if (response.success) {
-          return response.data.total;
-        }
+  totalBooks(params: any = {}): Observable<number> {
+    return this.http.get<any>(`${environment.API_URL}/book/total`, {params})
+      .pipe(
+        map(response => {
+          if (response.success) {
+            return response.data.total;
+          }
 
-        return 0
-      });
+          return 0
+        })
+      );
   }
 }
