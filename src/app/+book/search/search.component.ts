@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 })
 export class SearchComponent implements OnInit {
 
-  asin: string = '';
+  asin = '';
 
   constructor(private router: Router) { }
 

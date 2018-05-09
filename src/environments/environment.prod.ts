@@ -1,8 +1,8 @@
-const config = require('../../config.json');
-const version = require('../../package.json').version;
+import * as packageJson from '../../package.json';
+import * as config from '../../config.json';
 
 export const environment = {
-  production: true,
-  API_URL: config.API_URL,
-  version
+  production: false,
+  API_URL: (<any>config).API_URL,
+  version: (<any>packageJson).version
 };

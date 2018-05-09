@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -12,6 +11,7 @@ import {SearchComponent} from './+book/search/search.component';
 import {DetailComponent} from './+book/detail/detail.component';
 import { CreateComponent } from './+book/create/create.component';
 import { NewBooksComponent } from './+dashboard/new-books/new-books.component';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: 'book/create', component: CreateComponent },
@@ -38,7 +38,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpClientModule
   ],
   providers: [
     BookService

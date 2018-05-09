@@ -2,11 +2,11 @@
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `angular-cli.json`.
-const config = require('../../config.json');
-const version = require('../../package.json').version;
+import * as packageJson from '../../package.json';
+import * as config from '../../config.json';
 
 export const environment = {
   production: false,
-  API_URL: config.API_URL,
-  version
+  API_URL: (<any>config).API_URL,
+  version: (<any>packageJson).version
 };
