@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {BookService} from '../../shared/book.service';
-import {URLSearchParams} from '@angular/http';
 
 @Component({
   selector: 'app-new-books',
@@ -13,12 +12,9 @@ export class NewBooksComponent implements OnInit {
   constructor(private bookService: BookService) { }
 
   ngOnInit() {
-    const params = new URLSearchParams();
-    params.set('filter', 'last24h');
-    this.bookService.totalBooks(params)
+    this.bookService.totalBooks({filter: 'last24h'})
       .subscribe((total) => {
-      	this.total = total;
+        this.total = total;
       });
   }
-
 }
